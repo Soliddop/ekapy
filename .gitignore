@@ -1,0 +1,6 @@
+.DS_Store
+.claude/settings.local.json
+
+# Local design/build references; not deployed.
+refs/
+
