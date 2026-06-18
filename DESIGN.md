@@ -19,6 +19,7 @@
 --cyan-400 #34a9e0   buttons, accents, stat units
 --cyan-300 #6cc4e8   light accent headings, FAQ gradient top
 --teal     #2aa9b5   poster-style accents, teal bands/callouts
+--btn      #1a7aa8   button surface (white label, AA 4.9:1); --btn-hover #15648c
 --white    #ffffff
 --gray-100 #f2f5f8   light section bg
 --gray-300 #cfd9e4   borders
@@ -35,7 +36,7 @@ Objektiv Mk1 (Adobe kit `toc6mts`). Weights 400 / 700, + italics. Headings 700. 
 - **Hero / poster look:** grayscale photo (`filter:grayscale(1)`) under a navy→teal gradient overlay (`mix-blend-mode:multiply`) + top/bottom darkening. Two-tone headline: white line + `--cyan-300` accent line. See `.hero`.
 - **Alternating bands:** sections alternate navy ↔ white/gray for rhythm.
 - **Image-overlay cards / stats / accordion / testimonials slider / logo strip / info-slideshow / CTA value-band** — reusable components already in `css/styles.css`.
-- **Buttons:** `.btn` (cyan, fills blue on hover); `.btn--ghost` (outline, for secondary on dark); `.btn--lg`, `.btn--full`.
+- **Buttons:** `.btn` (deep cyan `--btn #1a7aa8`, darkens on hover — **white label needs ≥4.5:1, so the surface is deeper than the bright `--cyan-400` accent**); `.btn--ghost` (outline, white label, for secondary on dark); `.btn--lg`, `.btn--full`. `--cyan-400` stays for accents/stat numbers/icons where it sits on dark and passes.
 
 ## Page anatomy
 

@@ -4,9 +4,15 @@
 const nav = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const menu = document.getElementById('menu');
-const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+const btt = document.getElementById('btt');
+const onScroll = () => {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 40);
+  if (btt) btt.classList.toggle('btt--visible', y > 400);
+};
 onScroll();
 addEventListener('scroll', onScroll, { passive: true });
+if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 if (burger) {
   const setMenuOpen = open => {
     menu.classList.toggle('open', open);
