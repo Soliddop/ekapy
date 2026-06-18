@@ -28,7 +28,7 @@ if (burger) {
   });
 }
 
-// FAQ accordion — wire aria-controls + hide collapsed panels from screen readers
+// FAQ accordion: wire aria-controls + hide collapsed panels from screen readers
 document.querySelectorAll('.acc__q').forEach((q, i) => {
   const acc = q.parentElement;
   const a = acc.querySelector('.acc__a');
@@ -47,8 +47,8 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 });
 
-// Hero triptych — rotate active portrait + matching quote chip
-// ponytail: no auto-rotate / pause-button under reduced motion (WCAG 2.2.2) — click still switches
+// Hero triptych: rotate active portrait + matching quote chip
+// ponytail: no auto-rotate / pause-button under reduced motion (WCAG 2.2.2); click still switches
 (() => {
   const ports = [...document.querySelectorAll('.hp')];
   const quotes = [...document.querySelectorAll('.hq')];
@@ -107,7 +107,7 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 })();
 
-// Information slideshow — auto-cycle steps, swap duotone media, fill progress bar
+// Information slideshow: auto-cycle steps, swap duotone media, fill progress bar
 (() => {
   const steps = [...document.querySelectorAll('.ss-step')];
   const imgs = [...document.querySelectorAll('#ssMedia img')];
@@ -123,7 +123,7 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
     if (kenBurns && imgs[i]) gsap.fromTo(imgs[i], { scale: 1.12 }, { scale: 1, duration: DUR / 1000, ease: 'none' });
   };
   set(0);
-  // ponytail: no auto-cycle under reduced motion (WCAG 2.2.2) — click still advances steps
+  // ponytail: no auto-cycle under reduced motion (WCAG 2.2.2); click still advances steps
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     steps.forEach(s => s.addEventListener('click', () => set(+s.dataset.i)));
   } else {
@@ -133,7 +133,10 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   }
 })();
 
-// Counters — any [data-to] counts up when scrolled into view (GSAP if present, else IO + rAF)
+// Register ScrollTrigger once — all IIFEs below share this registration
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+
+// Counters: any [data-to] counts up when scrolled into view (GSAP if present, else IO + rAF)
 (() => {
   const nums = [...document.querySelectorAll('[data-to]')];
   if (!nums.length) return;
@@ -163,7 +166,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
     }
   };
   if (hasGSAP) {
-    gsap.registerPlugin(ScrollTrigger);
     nums.forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => run(el) }));
   } else {
     const io = new IntersectionObserver((entries, obs) => {
@@ -173,7 +175,7 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   }
 })();
 
-// Animated bars — any .bar fill carrying [data-val] (0–100) grows when scrolled in.
+// Animated bars: any .bar fill carrying [data-val] (0-100) grows when scrolled in.
 // Falls back to instant final width with no GSAP / reduced motion, so data never hides.
 (() => {
   const fills = [...document.querySelectorAll('[data-val]')];
@@ -181,14 +183,13 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
   if (!hasGSAP || reduce) { fills.forEach(f => { f.style.width = f.dataset.val + '%'; }); return; }
-  gsap.registerPlugin(ScrollTrigger);
   fills.forEach(f => gsap.to(f, {
     width: f.dataset.val + '%', duration: 1.3, ease: 'power3.out',
     scrollTrigger: { trigger: f, start: 'top 92%', once: true }
   }));
 })();
 
-// Bars — [data-h] grows height (vertical bars), [data-w] grows width (rank rows). 0–100, on scroll.
+// Bars: [data-h] grows height (vertical bars), [data-w] grows width (rank rows). 0-100, on scroll.
 (() => {
   const bars = [...document.querySelectorAll('[data-h],[data-w]')];
   if (!bars.length) return;
@@ -196,14 +197,13 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
   if (!hasGSAP || reduce) { bars.forEach(f => { const [p, v] = dim(f); f.style[p] = v + '%'; }); return; }
-  gsap.registerPlugin(ScrollTrigger);
   bars.forEach(f => { const [p, v] = dim(f); gsap.to(f, {
     [p]: v + '%', duration: 1.2, ease: 'power3.out',
     scrollTrigger: { trigger: f, start: 'top 92%', once: true }
   }); });
 })();
 
-// Line chart — draw the [data-draw] series on scroll (needs pathLength="1").
+// Line chart: draw the [data-draw] series on scroll (needs pathLength="1").
 (() => {
   const lines = [...document.querySelectorAll('[data-draw]')];
   if (!lines.length) return;
@@ -211,7 +211,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
   lines.forEach(l => { l.style.strokeDasharray = '1'; l.style.strokeDashoffset = (!hasGSAP || reduce) ? '0' : '1'; });
   if (!hasGSAP || reduce) return;
-  gsap.registerPlugin(ScrollTrigger);
   lines.forEach(l => gsap.to(l, {
     strokeDashoffset: 0, duration: 1.6, ease: 'power2.out',
     scrollTrigger: { trigger: l.closest('svg') || l, start: 'top 85%', once: true }
@@ -222,7 +221,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
 (() => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('[data-parallax]').forEach(el => {
     const img = el.querySelector('img') || el;
     gsap.set(img, { scale: 1.16 });
@@ -233,12 +231,11 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 })();
 
-// Generic scroll reveals for inner pages — [data-reveal] (single) and [data-reveal-group] (stagger children).
+// Generic scroll reveals for inner pages: [data-reveal] (single) and [data-reveal-group] (stagger children).
 // Hiding is applied from JS only, so content stays visible if GSAP fails to load.
 (() => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('[data-reveal]').forEach(el => {
     const dir = el.dataset.reveal || 'up';
     const from = { opacity: 0, duration: .7, ease: 'power2.out' };
@@ -258,15 +255,14 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 })();
 
-// ===== GSAP — hero entrance + scroll reveals =====
+// ===== GSAP: hero entrance + scroll reveals =====
 // Hiding is applied from JS only, so if GSAP fails to load the content stays visible.
 (() => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!document.querySelector('.hero')) return; // homepage only — inner pages use [data-reveal]
-  gsap.registerPlugin(ScrollTrigger);
+  if (!document.querySelector('.hero')) return; // homepage only; inner pages use [data-reveal]
 
-  // Hero entrance — staggered rise on load
+  // Hero entrance: staggered rise on load
   gsap.timeline({ defaults: { ease: 'power3.out' } })
     .from('.hero__slogan', { y: 46, opacity: 0, duration: .9 })
     .from('.hero__title', { y: 24, opacity: 0, duration: .6 }, '-=.5')
@@ -279,7 +275,7 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
       scrollTrigger: { trigger: el, start: 'top 85%' } });
   });
 
-  // Staggered group reveals — each fires when its container enters
+  // Staggered group reveals: each fires when its container enters
   const groups = [
     { items: '.cards .card', trigger: '.intro' },
     // clear opacity after reveal so the carousel's .active highlight (CSS) isn't frozen by inline styles

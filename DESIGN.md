@@ -34,12 +34,12 @@ Objektiv Mk1 (Adobe kit `toc6mts`). Weights 400 / 700, + italics. Headings 700. 
 
 - **Hero / poster look:** grayscale photo (`filter:grayscale(1)`) under a navy→teal gradient overlay (`mix-blend-mode:multiply`) + top/bottom darkening. Two-tone headline: white line + `--cyan-300` accent line. See `.hero`.
 - **Alternating bands:** sections alternate navy ↔ white/gray for rhythm.
-- **Cards / stats / accordion / testimonials slider / logo strip / info-slideshow / CTA value-band** — reusable components already in `css/styles.css`.
+- **Image-overlay cards / stats / accordion / testimonials slider / logo strip / info-slideshow / CTA value-band** — reusable components already in `css/styles.css`.
 - **Buttons:** `.btn` (cyan, fills blue on hover); `.btn--ghost` (outline, for secondary on dark); `.btn--lg`, `.btn--full`.
 
 ## Page anatomy
 
-**Home (`index.html`):** fixed nav → hero (duotone + 2 platform CTAs) → intro + 3 icon cards → Η Δράση (3 cols) → Δεδομένα (animated stat counters) → FAQ accordion → testimonials slider → contact channels → footer (4-col + funders strip + copyright bar).
+**Home (`index.html`):** fixed nav → hero (duotone + 2 platform CTAs) → intro + 3 image-overlay cards → process slideshow → Η Δράση (3 cols) → Δεδομένα (animated stat counters) → FAQ accordion → platform CTA → contact channels → footer (4-col + funders strip + copyright bar). Light and dark sections alternate to keep each content block visually distinct.
 
 **Inner pages:** fixed nav → `.page-hero` banner (gradient + breadcrumb) → stacked `.block` sections (alternating bg) → footer.
 
