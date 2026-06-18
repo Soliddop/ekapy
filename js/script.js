@@ -233,21 +233,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 })();
 
-// Timeline — draw the centre line as the section scrolls
-(() => {
-  const line = document.querySelector('.timeline__line');
-  if (!line) return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
-  if (!hasGSAP || reduce) { line.style.transform = 'translateX(-50%) scaleY(1)'; return; }
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.set(line, { scaleY: 0, transformOrigin: 'left top' });
-  gsap.to(line, {
-    scaleY: 1, ease: 'none', transformOrigin: 'left top',
-    scrollTrigger: { trigger: '.timeline', start: 'top 70%', end: 'bottom 80%', scrub: true }
-  });
-})();
-
 // Generic scroll reveals for inner pages — [data-reveal] (single) and [data-reveal-group] (stagger children).
 // Hiding is applied from JS only, so content stays visible if GSAP fails to load.
 (() => {
@@ -302,7 +287,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
     { items: '.cols .col', trigger: '.drasi' },
     { items: '.stat', trigger: '.dedomena' },
     { items: '.acc', trigger: '.faq' },
-    { items: '.news__item', trigger: '.nea' },
     { items: '.checklist li', trigger: '.ctaband' },
   ];
   groups.forEach(g => {

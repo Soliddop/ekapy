@@ -21,7 +21,7 @@ Language: **Greek (el)**. All user-facing copy is Greek.
 | Path | Role |
 |---|---|
 | `index.html` | Αρχική (home) — overview of all sections |
-| `drasi.html`, `dedomena.html`, `epikairotita.html`, `epikoinonia.html` | inner pages (Η Δράση · Δεδομένα · Επικαιρότητα · Επικοινωνία) — poster/editorial layouts on the `.phero` + `.band` system |
+| `drasi.html`, `dedomena.html`, `epikoinonia.html` | inner pages (Η Δράση · Δεδομένα · Επικοινωνία) — poster/editorial layouts on the `.phero` + `.band` system |
 | `css/styles.css` | all styles, CSS custom props in `:root` |
 | `js/script.js` | all interactions |
 | `js/vendor/` | `gsap.min.js`, `ScrollTrigger.min.js` (the only files the site loads from GSAP) |
@@ -32,7 +32,7 @@ Language: **Greek (el)**. All user-facing copy is Greek.
 
 ## Sitemap — 2 LEVELS ONLY
 
-5 top-level pages (see table above). **Anything that looks like a 3rd level is a SECTION, not a route.** Examples that are sections, not pages: "Για τον πολίτη", "Για επαγγελματίες υγείας", "Υπουργείο Υγείας / ΕΚΑΠΥ / ΕΟΠΥΥ". Full breakdown in [DESIGN.md](DESIGN.md).
+4 top-level pages (see table above). **Anything that looks like a 3rd level is a SECTION, not a route.** Examples that are sections, not pages: "Για τον πολίτη", "Για επαγγελματίες υγείας", "Υπουργείο Υγείας / ΕΚΑΠΥ / ΕΟΠΥΥ". Full breakdown in [DESIGN.md](DESIGN.md).
 
 ## Content
 

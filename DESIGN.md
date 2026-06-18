@@ -34,12 +34,12 @@ Objektiv Mk1 (Adobe kit `toc6mts`). Weights 400 / 700, + italics. Headings 700. 
 
 - **Hero / poster look:** grayscale photo (`filter:grayscale(1)`) under a navy→teal gradient overlay (`mix-blend-mode:multiply`) + top/bottom darkening. Two-tone headline: white line + `--cyan-300` accent line. See `.hero`.
 - **Alternating bands:** sections alternate navy ↔ white/gray for rhythm.
-- **Cards / stats / accordion / testimonials slider / news grid / logo strip / info-slideshow / CTA value-band** — reusable components already in `css/styles.css`.
+- **Cards / stats / accordion / testimonials slider / logo strip / info-slideshow / CTA value-band** — reusable components already in `css/styles.css`.
 - **Buttons:** `.btn` (cyan, fills blue on hover); `.btn--ghost` (outline, for secondary on dark); `.btn--lg`, `.btn--full`.
 
 ## Page anatomy
 
-**Home (`index.html`):** fixed nav → hero (duotone + 2 platform CTAs) → intro + 3 icon cards → Η Δράση (3 cols) → Δεδομένα (animated stat counters) → FAQ accordion → testimonials slider → Επικαιρότητα news grid → contact channels → footer (4-col + funders strip + copyright bar).
+**Home (`index.html`):** fixed nav → hero (duotone + 2 platform CTAs) → intro + 3 icon cards → Η Δράση (3 cols) → Δεδομένα (animated stat counters) → FAQ accordion → testimonials slider → contact channels → footer (4-col + funders strip + copyright bar).
 
 **Inner pages:** fixed nav → `.page-hero` banner (gradient + breadcrumb) → stacked `.block` sections (alternating bg) → footer.
 
@@ -54,8 +54,6 @@ Objektiv Mk1 (Adobe kit `toc6mts`). Weights 400 / 700, + italics. Headings 700. 
   - CTA «Απογευματινά Χειρουργεία» → platform
 - **Δεδομένα & Διαφάνεια** — `dedomena.html`
   - Dashboards · Σύνολο επεμβάσεων · Χρόνος αναμονής πριν/μετά · Νοσοκομεία με μεγαλύτερη «παραγωγή»
-- **Επικαιρότητα & Ανακοινώσεις** — `epikairotita.html`
-  - Δελτία Τύπου · Νέα του Έργου · Εκδηλώσεις / Ημερίδες
 - **Επικοινωνία** — `epikoinonia.html`
   - Τηλέφωνα Υποστήριξης · Κοινωνικά Δίκτυα
 
@@ -65,6 +63,6 @@ Objektiv Mk1 (Adobe kit `toc6mts`). Weights 400 / 700, + italics. Headings 700. 
 
 ## Known stubs (`ponytail:` comments in code)
 
-- Hero & news photos = loremflickr stock → swap `src` for licensed shots.
+- Hero photos = stock photography → swap `src` for licensed shots.
 - Funder logos = official white versions in `assets/logos/` (Ελλάδα 2.0 + NextGenerationEU lockup PNG, Υπ. Υγείας white SVG). The Greece 2.0 lockup already bundles the EU emblem, covering both the Ελλάδα 2.0 and EU/NextGenerationEU slots.
 - Dashboard figures + stats = placeholder numbers → real data.
