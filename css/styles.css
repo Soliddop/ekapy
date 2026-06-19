@@ -669,14 +669,6 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
   opacity:.08;transform:rotate(-8deg);pointer-events:none}
 .action-panel>*{position:relative;z-index:1}
 
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
-.kpi{position:relative;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.12);overflow:hidden}
-.kpi__fig{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}
-.kpi__n{font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:var(--cyan-300);line-height:1.05;letter-spacing:-.02em}
-.kpi__u{color:var(--cyan-400);font-weight:700;font-size:.85rem}
-.kpi__l{color:#cfe0ee;font-size:.88rem;margin-top:8px;line-height:1.4}
-
 .chartsplit{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:44px}
 
 .vchart__cap{font-weight:700;color:var(--navy-900);margin-bottom:22px}
@@ -736,11 +728,9 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .ergo-grid .feature__media{aspect-ratio:4/3;margin:0}
 
 @media(max-width:860px){
-  .kpis{grid-template-columns:1fr 1fr}
   .chartsplit,.donutwrap,.ergo-grid{grid-template-columns:1fr;gap:32px}
   .donut{margin:0 auto}
 }
-@media(max-width:520px){.kpis{grid-template-columns:1fr}}
 .btt{position:fixed;right:24px;bottom:28px;z-index:49;width:46px;height:46px;border-radius:50%;background:var(--cyan-400);color:#fff;border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s,background .2s,visibility 0s linear .25s}
 .btt--visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition:opacity .25s,transform .25s,background .2s}
 .btt{background:var(--btn)} /* white arrow needs 3:1 — cyan-400 fails at 2.66:1 */
