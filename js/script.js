@@ -337,8 +337,10 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   bar.className = 'cookie-bar';
   bar.setAttribute('role', 'region');
   bar.setAttribute('aria-label', 'Συγκατάθεση cookies');
+  var cssEl = document.querySelector('link[href*="styles.css"]');
+  var siteRoot = cssEl ? cssEl.href.replace(/css\/styles\.css.*$/, '') : './';
   bar.innerHTML =
-    '<p class="cookie-bar__text">Με τη συγκατάθεσή σας, χρησιμοποιούμε Google Analytics 4 για συγκεντρωτικά στατιστικά επισκεψιμότητας. Η απόρριψη δεν επηρεάζει τη χρήση του ιστοτόπου. <a href="/cookies/">Περισσότερες πληροφορίες</a></p>' +
+    '<p class="cookie-bar__text">Με τη συγκατάθεσή σας, χρησιμοποιούμε Google Analytics 4 για συγκεντρωτικά στατιστικά επισκεψιμότητας. Η απόρριψη δεν επηρεάζει τη χρήση του ιστοτόπου. <a href="' + siteRoot + 'cookies/">Περισσότερες πληροφορίες</a></p>' +
     '<div class="cookie-bar__actions">' +
     '<button class="cookie-bar__btn cookie-bar__btn--reject" id="ck-reject" type="button">Απόρριψη</button>' +
     '<button class="cookie-bar__btn cookie-bar__btn--accept" id="ck-accept" type="button">Αποδοχή στατιστικών</button>' +
