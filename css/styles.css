@@ -318,6 +318,7 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
   .contact__grid{grid-template-columns:1fr;gap:30px}
   .footer__cols{grid-template-columns:1fr 1fr;gap:28px}
   .footer__col--brand{grid-column:1/-1}
+  .footer__bar .wrap{padding-right:80px}
   .footer__brand .nav__logo{width:66px}
   .split,.entities,.dash{grid-template-columns:1fr}
   .deck-slider__stage{padding-top:24px}
