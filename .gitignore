@@ -1,6 +1,35 @@
+# Operating-system and editor metadata
 .DS_Store
-.claude/settings.local.json
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
 
-# Local design/build references; not deployed.
+# Local AI/agent configuration and project guidance
+.agents/
+.claude/
+.codex/
+AGENTS.md
+CLAUDE.md
+CONTENT_BRIEF.md
+DESIGN.md
+
+# Design, research and source material; not deployed
 refs/
+/*.pdf
+/*.zip
 
+# Legacy source assets replaced by optimized WebP files
+assets/portrait1.jpg
+assets/portrait2.jpg
+assets/portrait3.jpg
+assets/logos/greece20-nextgen-white.png
+
+# Local server and tooling output
+*.log
+.cache/
+tmp/
+temp/
