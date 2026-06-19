@@ -308,3 +308,49 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   gsap.from('.contact__info', { opacity: 0, y: 30, duration: .7, ease: 'power2.out', stagger: .15,
     scrollTrigger: { trigger: '.contact', start: 'top 80%' } });
 })();
+
+// === Cookie consent + GA4 ===
+// ponytail: replace GA_ID with real GA4 measurement ID before go-live
+(function(){
+  var GA_ID = 'G-XXXXXXXXXX';
+  var KEY = 'ekapy_cookie_consent';
+
+  function loadGA() {
+    // Do not request Google scripts while the measurement ID is still a placeholder.
+    if (!/^G-[A-Z0-9]+$/.test(GA_ID) || GA_ID === 'G-XXXXXXXXXX') return;
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  var consent = localStorage.getItem(KEY);
+  if (consent === 'accepted') { loadGA(); return; }
+  if (consent === 'rejected') { return; }
+
+  var bar = document.createElement('div');
+  bar.className = 'cookie-bar';
+  bar.setAttribute('role', 'region');
+  bar.setAttribute('aria-label', 'Συγκατάθεση cookies');
+  bar.innerHTML =
+    '<p class="cookie-bar__text">Με τη συγκατάθεσή σας, χρησιμοποιούμε Google Analytics 4 για συγκεντρωτικά στατιστικά επισκεψιμότητας. Η απόρριψη δεν επηρεάζει τη χρήση του ιστοτόπου. <a href="/cookies/">Περισσότερες πληροφορίες</a></p>' +
+    '<div class="cookie-bar__actions">' +
+    '<button class="cookie-bar__btn cookie-bar__btn--reject" id="ck-reject" type="button">Απόρριψη</button>' +
+    '<button class="cookie-bar__btn cookie-bar__btn--accept" id="ck-accept" type="button">Αποδοχή στατιστικών</button>' +
+    '</div>';
+  document.body.appendChild(bar);
+  requestAnimationFrame(function(){ bar.classList.add('cookie-bar--visible'); });
+
+  function dismiss(val) {
+    localStorage.setItem(KEY, val);
+    bar.classList.remove('cookie-bar--visible');
+    setTimeout(function(){ bar.remove(); }, 400);
+  }
+  document.getElementById('ck-accept').addEventListener('click', function(){ dismiss('accepted'); loadGA(); });
+  document.getElementById('ck-reject').addEventListener('click', function(){ dismiss('rejected'); });
+})();
