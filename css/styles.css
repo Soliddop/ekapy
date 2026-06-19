@@ -7,8 +7,8 @@
   --cyan-400:#34a9e0;
   --cyan-300:#6cc4e8;
   --teal:#2aa9b5;
-  --btn:#1a7aa8;        /* button surface — white text 4.9:1 (AA); cyan-400 fails at 2.66:1 */
-  --btn-hover:#15648c;  /* white text 6.5:1 */
+  --btn:#1a7aa8;
+  --btn-hover:#15648c;
   --white:#ffffff;
   --gray-100:#f2f5f8;
   --gray-300:#cfd9e4;
@@ -41,10 +41,9 @@ h1,h2,h3{line-height:1.15;font-weight:700}
 .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-/* WCAG 2.4.7 — visible keyboard focus. blue-500 keeps ≥3:1 on both light and navy surfaces. */
 :focus-visible{outline:3px solid var(--blue-500);outline-offset:3px;border-radius:4px}
 .skip-link:focus-visible{outline-offset:0}
-#main:focus{outline:none} /* skip-link target; focus moved here, no ring on the region */
+#main:focus{outline:none}
 
 .section-title{text-align:center;color:var(--blue-500);font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:.4em}
 .section-title--light{color:var(--white)}
@@ -153,7 +152,7 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
 .col{text-align:center}
 .col__icon{width:48px;height:48px;border-radius:50%;background:var(--cyan-400);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin:0 auto 16px}
-.col h3{color:var(--link);margin-bottom:10px;font-size:1.1rem} /* --link 5.5:1 vs blue-500 4.26:1 on white */
+.col h3{color:var(--link);margin-bottom:10px;font-size:1.1rem}
 .col p{font-size:.92rem;color:#46586e;margin-bottom:18px}
 .col .btn{min-width:220px}
 
@@ -214,7 +213,7 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .deck-card[data-pos="out"]{
   transform:translateY(40px) scale(.9);opacity:0;z-index:0;pointer-events:none;
 }
-.deck-card__eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.15em;color:var(--navy-900)} /* teal failed 2.8:1 on white card */
+.deck-card__eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.15em;color:var(--navy-900)}
 .deck-card__quote{font-size:1.18rem;line-height:1.55;color:var(--navy-900);font-weight:600}
 .deck-card__footer strong{display:block;font-size:.92rem;color:var(--navy-900);margin-bottom:2px}
 .deck-card__footer span{font-size:.8rem;color:#5a6b7f}
@@ -263,7 +262,7 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .ss-step.active{opacity:1}
 .ss-step__bar{position:absolute;left:-3px;top:0;width:3px;height:0;background:var(--cyan-400);border-radius:3px}
 .ss-step.active .ss-step__bar{height:100%;transition:height var(--ss-dur) linear}
-.ss-step h3{color:var(--link);font-size:1.1rem;margin-bottom:0} /* --link clears 4.5:1 on gray-100 */
+.ss-step h3{color:var(--link);font-size:1.1rem;margin-bottom:0}
 .ss-step__num{color:var(--cyan-400);font-weight:700;margin-right:8px}
 .ss-step p{font-size:.92rem;color:#46586e;max-height:0;overflow:hidden;transition:max-height .4s ease}
 .ss-step.active p{max-height:180px;margin-top:8px}
@@ -302,7 +301,6 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
   .nav__brand-text{min-width:0}
   .nav__brand-text strong{font-size:.88rem;letter-spacing:.02em}
   .nav__brand-text small{font-size:.72rem}
-  /* WCAG 2.4.3 — closed off-canvas drawer is hidden from tab order, not just slid off-screen */
   .nav__menu{position:fixed;top:0;left:0;bottom:0;width:78%;max-width:320px;background:var(--navy-900);flex-direction:column;align-items:flex-start;justify-content:center;gap:22px;padding:40px;transform:translateX(-100%);visibility:hidden;transition:transform .3s,visibility 0s linear .3s;box-shadow:4px 0 20px rgba(0,0,0,.3)}
   .nav__menu.open{transform:translateX(0);visibility:visible;transition:transform .3s,visibility 0s}
   .cards,.cols,.stats{grid-template-columns:1fr}
@@ -505,7 +503,7 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .doc__no{font-size:1.7rem;font-weight:700;color:var(--cyan-400);min-width:2.2ch;letter-spacing:-.02em}
 .doc h3{font-size:1.06rem;color:var(--navy-900)}
 .doc p{font-size:.9rem;color:#46586e;margin-top:4px}
-.doc__tag{font-size:.78rem;font-weight:700;color:var(--navy-900);white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;background:rgba(42,169,181,.12);padding:6px 12px;border-radius:20px} /* navy on teal-tint chip clears 4.5:1; teal text failed at 2.8:1 */
+.doc__tag{font-size:.78rem;font-weight:700;color:var(--navy-900);white-space:nowrap;text-transform:uppercase;letter-spacing:.05em;background:rgba(42,169,181,.12);padding:6px 12px;border-radius:20px}
 
 .budget{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:46px}
 .budget__fig{font-size:clamp(3rem,9vw,6rem);font-weight:700;color:var(--cyan-300);line-height:.9;letter-spacing:-.02em}
@@ -733,20 +731,17 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 }
 .btt{position:fixed;right:24px;bottom:28px;z-index:49;width:46px;height:46px;border-radius:50%;background:var(--cyan-400);color:#fff;border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 18px rgba(0,0,0,.22);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(10px);transition:opacity .25s,transform .25s,background .2s,visibility 0s linear .25s}
 .btt--visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition:opacity .25s,transform .25s,background .2s}
-.btt{background:var(--btn)} /* white arrow needs 3:1 — cyan-400 fails at 2.66:1 */
+.btt{background:var(--btn)}
 .btt:hover{background:var(--btn-hover)}
 .btt:hover{background:var(--blue-500)}
 .btt svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
-/* WCAG 2.3.3 — honor reduced-motion in CSS too (JS already gates GSAP/auto-rotate).
-   Kills smooth-scroll + decorative transitions/animations; visibility transitions kept usable. */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
 
-/* === Cookie consent banner === */
 .cookie-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--navy-900);color:#fff;padding:14px 20px;padding-bottom:max(14px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-top:2px solid var(--cyan-400);box-shadow:0 -4px 24px rgba(0,0,0,.35);transform:translateY(100%);transition:transform .35s ease}
 .cookie-bar--visible{transform:translateY(0)}
 .cookie-bar__text{font-size:.875rem;line-height:1.5;flex:1;min-width:200px}
@@ -759,7 +754,6 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .cookie-bar__btn--reject:hover{background:rgba(255,255,255,.08)}
 @media(max-width:520px){.cookie-bar__actions{width:100%}.cookie-bar__btn{flex:1;text-align:center}}
 
-/* === Legal pages prose === */
 .prose{max-width:760px}
 .prose h2{font-size:1.35rem;font-weight:700;color:var(--blue-500);margin:2.5rem 0 .75rem}
 .prose h3{font-size:1.05rem;font-weight:700;color:var(--ink);margin:1.75rem 0 .5rem}

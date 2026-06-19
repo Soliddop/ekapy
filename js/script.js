@@ -1,6 +1,3 @@
-// ===== EKAPY homepage interactions =====
-
-// Nav: scrolled state + mobile menu
 const nav = document.getElementById('nav');
 const burger = document.getElementById('burger');
 const menu = document.getElementById('menu');
@@ -34,14 +31,13 @@ if (burger) {
   });
 }
 
-// FAQ accordion: wire aria-controls + hide collapsed panels from screen readers
 document.querySelectorAll('.acc__q').forEach((q, i) => {
   const acc = q.parentElement;
   const a = acc.querySelector('.acc__a');
   if (a) {
     if (!a.id) a.id = `acc-panel-${i}`;
     q.setAttribute('aria-controls', a.id);
-    a.setAttribute('aria-hidden', 'true'); // collapsed by default
+    a.setAttribute('aria-hidden', 'true');
   }
   q.addEventListener('click', () => {
     const open = acc.classList.toggle('open');
@@ -53,8 +49,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 });
 
-// Hero triptych: rotate active portrait + matching quote chip
-// ponytail: no auto-rotate / pause-button under reduced motion (WCAG 2.2.2); click still switches
 (() => {
   const ports = [...document.querySelectorAll('.hp')];
   const quotes = [...document.querySelectorAll('.hq')];
@@ -76,7 +70,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   }
 })();
 
-// Deck card slider
 (() => {
   const stage = document.getElementById('deckStack');
   const dotsEl = document.getElementById('deckDots');
@@ -85,7 +78,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   const n = cards.length;
   let front = 0;
 
-  // build dot buttons
   const dots = cards.map((_, i) => {
     const btn = document.createElement('button');
     btn.className = 'deck-dot';
@@ -104,7 +96,6 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   };
   update();
 
-  // click peeking card → bring to front
   stage.addEventListener('click', e => {
     const card = e.target.closest('.deck-card');
     if (!card || card.dataset.pos === '0') return;
@@ -113,23 +104,20 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   });
 })();
 
-// Information slideshow: auto-cycle steps, swap duotone media, fill progress bar
 (() => {
   const steps = [...document.querySelectorAll('.ss-step')];
   const imgs = [...document.querySelectorAll('#ssMedia img')];
   if (!steps.length) return;
-  const DUR = 4600; // keep in sync with --ss-dur in styles.css
+  const DUR = 4600;
   const kenBurns = typeof gsap !== 'undefined' && !matchMedia('(prefers-reduced-motion: reduce)').matches;
   let i = 0, timer;
   const set = n => {
     i = (n + steps.length) % steps.length;
     steps.forEach((s, k) => s.classList.toggle('active', k === i));
     imgs.forEach((im, k) => im.classList.toggle('active', k === i));
-    // subtle zoom-out on the entering image (CSS handles the crossfade)
     if (kenBurns && imgs[i]) gsap.fromTo(imgs[i], { scale: 1.12 }, { scale: 1, duration: DUR / 1000, ease: 'none' });
   };
   set(0);
-  // ponytail: no auto-cycle under reduced motion (WCAG 2.2.2); click still advances steps
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
     steps.forEach(s => s.addEventListener('click', () => set(+s.dataset.i)));
   } else {
@@ -139,10 +127,8 @@ document.querySelectorAll('.acc__q').forEach((q, i) => {
   }
 })();
 
-// Register ScrollTrigger once — all IIFEs below share this registration
 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
-// Counters: any [data-to] counts up when scrolled into view (GSAP if present, else IO + rAF)
 (() => {
   const nums = [...document.querySelectorAll('[data-to]')];
   if (!nums.length) return;
@@ -152,7 +138,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   };
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasGSAP = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
-  // reduced motion: render final values immediately (no scroll dependency)
   if (reduce) { nums.forEach(el => { el.textContent = fmt(parseFloat(el.dataset.to), +el.dataset.dec || 0, el.dataset.sep || ''); }); return; }
   const run = el => {
     const to = parseFloat(el.dataset.to);
@@ -181,8 +166,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   }
 })();
 
-// Animated bars: any .bar fill carrying [data-val] (0-100) grows when scrolled in.
-// Falls back to instant final width with no GSAP / reduced motion, so data never hides.
 (() => {
   const fills = [...document.querySelectorAll('[data-val]')];
   if (!fills.length) return;
@@ -195,7 +178,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   }));
 })();
 
-// Bars: [data-h] grows height (vertical bars), [data-w] grows width (rank rows). 0-100, on scroll.
 (() => {
   const bars = [...document.querySelectorAll('[data-h],[data-w]')];
   if (!bars.length) return;
@@ -209,7 +191,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   }); });
 })();
 
-// Line chart: draw the [data-draw] series on scroll (needs pathLength="1").
 (() => {
   const lines = [...document.querySelectorAll('[data-draw]')];
   if (!lines.length) return;
@@ -223,7 +204,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   }));
 })();
 
-// Gentle parallax on duotone media wrappers ([data-parallax])
 (() => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -237,8 +217,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   });
 })();
 
-// Generic scroll reveals for inner pages: [data-reveal] (single) and [data-reveal-group] (stagger children).
-// Hiding is applied from JS only, so content stays visible if GSAP fails to load.
 (() => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -261,30 +239,24 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
   });
 })();
 
-// ===== GSAP: hero entrance + scroll reveals =====
-// Hiding is applied from JS only, so if GSAP fails to load the content stays visible.
 (() => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!document.querySelector('.hero')) return; // homepage only; inner pages use [data-reveal]
+  if (!document.querySelector('.hero')) return;
 
-  // Hero entrance: staggered rise on load
   gsap.timeline({ defaults: { ease: 'power3.out' } })
     .from('.hero__slogan', { y: 46, opacity: 0, duration: .9 })
     .from('.hero__title', { y: 24, opacity: 0, duration: .6 }, '-=.5')
     .from('.hero__sub', { y: 20, opacity: 0, duration: .6 }, '-=.42')
     .from('.hero__cta .btn', { y: 16, opacity: 0, duration: .5, stagger: .12 }, '-=.35');
 
-  // Section headings rise as they scroll in
   gsap.utils.toArray('.section-title, .intro__heading').forEach(el => {
     gsap.from(el, { y: 30, opacity: 0, duration: .7, ease: 'power2.out',
       scrollTrigger: { trigger: el, start: 'top 85%' } });
   });
 
-  // Staggered group reveals: each fires when its container enters
   const groups = [
     { items: '.cards .card', trigger: '.intro' },
-    // clear opacity after reveal so the carousel's .active highlight (CSS) isn't frozen by inline styles
     { items: '.ss-step', trigger: '.slideshow', x: -28, y: 0, clear: 'opacity' },
     { items: '.cols .col', trigger: '.drasi' },
     { items: '.stat', trigger: '.dedomena' },
@@ -302,21 +274,17 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
     });
   });
 
-  // CTA band copy + contact panels
   gsap.from('.ctaband__text > *', { opacity: 0, y: 26, duration: .6, ease: 'power2.out', stagger: .12,
     scrollTrigger: { trigger: '.ctaband', start: 'top 78%' } });
   gsap.from('.contact__info', { opacity: 0, y: 30, duration: .7, ease: 'power2.out', stagger: .15,
     scrollTrigger: { trigger: '.contact', start: 'top 80%' } });
 })();
 
-// === Cookie consent + GA4 ===
-// ponytail: replace GA_ID with real GA4 measurement ID before go-live
 (function(){
   var GA_ID = 'G-XXXXXXXXXX';
   var KEY = 'ekapy_cookie_consent';
 
   function loadGA() {
-    // Do not request Google scripts while the measurement ID is still a placeholder.
     if (!/^G-[A-Z0-9]+$/.test(GA_ID) || GA_ID === 'G-XXXXXXXXXX') return;
     var s = document.createElement('script');
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
