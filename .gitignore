@@ -22,12 +22,6 @@ refs/
 /*.pdf
 /*.zip
 
-# Legacy source assets replaced by optimized WebP files
-assets/portrait1.jpg
-assets/portrait2.jpg
-assets/portrait3.jpg
-assets/logos/greece20-nextgen-white.png
-
 # Local server and tooling output
 *.log
 .cache/
