@@ -249,14 +249,14 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') gsap.re
     else if (dir === 'left') from.x = -44;
     else if (dir === 'right') from.x = 44;
     else if (dir === 'zoom') from.scale = .92;
-    gsap.from(el, { ...from, scrollTrigger: { trigger: el, start: 'top 86%' } });
+    gsap.from(el, { ...from, scrollTrigger: { trigger: el, start: 'top 94%' } });
   });
   gsap.utils.toArray('[data-reveal-group]').forEach(group => {
     const items = [...group.children];
     if (!items.length) return;
     gsap.from(items, {
       opacity: 0, y: 32, duration: .65, ease: 'power2.out', stagger: .1,
-      scrollTrigger: { trigger: group, start: 'top 84%' }
+      scrollTrigger: { trigger: group, start: 'top 94%' }
     });
   });
 })();
