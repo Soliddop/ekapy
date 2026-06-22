@@ -12,10 +12,12 @@ Desktop.ini
 .agents/
 .claude/
 .codex/
+.impeccable/
 AGENTS.md
 CLAUDE.md
 CONTENT_BRIEF.md
 DESIGN.md
+PRODUCT.md
 
 # Design, research and source material; not deployed
 refs/
