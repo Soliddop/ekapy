@@ -405,12 +405,21 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .role-list{margin-top:44px;border-top:1px solid var(--gray-300)}
 .role-list article{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--gray-300)}
 .role-list h3{color:var(--navy-900);font-size:1.12rem;margin-bottom:6px}
+.role-list h3 small{display:block;font-weight:400;font-size:.8rem;color:#5a6b7f;margin-top:2px}
 .role-list p{color:#46586e;max-width:76ch}
+
+.subprojects-wrap{margin-top:48px;overflow-x:auto}
+.subprojects{width:100%;border-collapse:collapse;color:#cfe0ee}
+.subprojects caption{text-align:left;color:#cfe0ee;margin-bottom:18px}
+.subprojects th,.subprojects td{text-align:left;padding:15px 24px 15px 0;border-bottom:1px solid rgba(255,255,255,.22);vertical-align:top}
+.subprojects thead th{color:var(--cyan-300);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.subprojects tbody th{color:var(--white);white-space:nowrap;width:120px}
 
 .doc{color:inherit}
 .doc:hover{text-decoration:none}
 
 .funding-ledger{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(34px,6vw,84px);margin-top:44px;align-items:start}
+.funding-ledger--solo{grid-template-columns:1fr}
 .funding-ledger__total{border-top:0;padding:4px 0}
 .funding-ledger__total span,.funding-ledger__total small{display:block;color:#cfe0ee}
 .funding-ledger__total strong{display:block;font-size:clamp(2.2rem,5vw,4.3rem);line-height:1;color:var(--white);margin:10px 0;white-space:nowrap}
