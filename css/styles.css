@@ -365,13 +365,13 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 .h-sec b{color:var(--blue-500)}
 .band--navy .h-sec,.band--teal .h-sec{color:#fff}
 .band--navy .h-sec b,.band--teal .h-sec b{color:var(--cyan-300)}
-.lede{font-size:clamp(1.12rem,1.9vw,1.45rem);line-height:1.5;color:var(--navy-700);max-width:760px;margin-top:24px}
+.lede{font-size:clamp(1.12rem,1.9vw,1.45rem);line-height:1.5;color:var(--navy-700);max-width:900px;margin-top:24px}
 .band--navy .lede,.band--teal .lede{color:#eaf4fb}
 .lede b{color:var(--blue-500)}.band--navy .lede b,.band--teal .lede b{color:var(--cyan-300)}
 .muted-note{font-size:.85rem;opacity:.72;margin-top:18px;max-width:680px}
 
 .editorial{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(0,1.18fr);gap:clamp(36px,7vw,96px);align-items:start}
-.editorial__intro{max-width:760px}
+.editorial__intro{max-width:900px}
 .editorial__body{font-size:1rem;color:#33465c}
 .editorial__body p{margin-bottom:18px}
 .editorial--dark .editorial__body{color:#cfe0ee}
