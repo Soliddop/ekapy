@@ -701,8 +701,8 @@ a.btn[target="_blank"]::after,a.nav__cta[target="_blank"]::after,.button-row .te
 
 .donutwrap{display:grid;grid-template-columns:300px 1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:44px}
 .donut{position:relative;width:262px;height:262px;border-radius:50%;margin:0 auto;
-  background:conic-gradient(var(--blue-500) 0 86deg,var(--cyan-400) 86deg 140deg,var(--teal) 140deg 187deg,
-    var(--cyan-300) 187deg 223deg,var(--navy-700) 223deg 252deg,var(--gray-300) 252deg 360deg);
+  background:conic-gradient(var(--blue-500) 0 77deg,var(--cyan-400) 77deg 125deg,var(--teal) 125deg 166deg,
+    var(--cyan-300) 166deg 197deg,var(--navy-700) 197deg 222deg,var(--gray-300) 222deg 360deg);
   box-shadow:0 16px 40px rgba(13,35,64,.16)}
 .donut::after{content:"";position:absolute;inset:62px;border-radius:50%;background:#fff}
 .donut__center{position:absolute;inset:0;display:grid;place-content:center;text-align:center;z-index:1}
